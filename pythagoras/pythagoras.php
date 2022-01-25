@@ -90,15 +90,20 @@ function checkPrimitive(array $triple): bool {
 
 function sortArray(array $triples, string $col1, string $col2): array {
 	
-	// TODO prüfen nach abc
-	/*if (in_array($col1, ['a', 'b', 'c'], false)) {
+	$validCols = ['a', 'b', 'c'];
+	if (!(isColValid($validCols, $col1) && isColValid($validCols, $col2))) {
 		$col1 = "a";
-	}*/
+		$col2 = "b";
+	}
 
 	$sorted1 = array_column($triples, $col1);
 	$sorted2 = array_column($triples, $col2);
 	array_multisort($sorted1, $sorted2, $triples);
 	return $triples;
+}
+
+function isColValid(array $validCols, string $col): bool {
+	return in_array($col, $validCols, true);
 }
 
 function printTable(array $triples) {
