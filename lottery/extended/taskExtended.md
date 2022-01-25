@@ -5,14 +5,12 @@ Zufallszahlen zwischen einschließlich 1 und 20 zurückgibt.
 Jede dieser Zufallszahlen darf in dem Array nur einmal
 vorkommen.
 
-Beispiel:
-
+Beispiel:<br>
 falsch: [12, 3, 20, 12, 8] --- richtig: [12, 3, 20, 14, 8]
 
-Bevor die o. g. Funktion das Array mit den fünf Zufalls-
-zahlen zurückgibt, sollen die Zahlen in dem Array auf-
-steigend sortiert werden.
-Beispiel: [3, 8, 12, 14, 20]
+Bevor die o. g. Funktion das Array mit den fünf Zufallszahlen zurückgibt, sollen die Zahlen in dem Array aufsteigend sortiert werden.
+
+Beispiel:<br> [3, 8, 12, 14, 20]
 
 # 2) Aufgabe
 
@@ -28,7 +26,7 @@ Die Zahlen sollen in dieser Glückskombination aufsteigend
 sortiert werden.
 
 Diese Glückskombination soll zunächst ausgegeben werden 
-nach dem Schema:
+nach dem Schema:<br>
 Die Glückskombination: 1 3 8 9 12
 
 Anschließend sollen solange Kombinationen (wieder auf-
@@ -43,12 +41,13 @@ usw.
 Zuletzt soll eine statistische Auswertung der Ziehungen
 erfolgen nach dem Schema:
 Insgesamt 12395 Ziehungen, darunter:
-0 Richtige: 2373
-1 Richtige: 5425
-2 Richtige: 3681
-3 Richtige: 855
-4 Richtige: 60
-5 Richtige: 1
+
+0. Richtige: 2373
+1. Richtige: 5425
+2. Richtige: 3681
+3. Richtige: 855
+4. Richtige: 60
+5. Richtige: 1
 
 Ergänzen Sie das Skript so, dass bei der Ausgabe aller 
 Kombinationen nur die ersten 1000 Kombinationen aus-
