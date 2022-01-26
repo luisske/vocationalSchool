@@ -1,1 +1,4 @@
 .DS_Store
+
+# simple script to copy php sources to xampp htdocs
+copySources.sh
