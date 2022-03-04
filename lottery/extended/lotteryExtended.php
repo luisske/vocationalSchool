@@ -26,45 +26,45 @@ function calcRandomArray(int $number, int $amount): array {
     return $intArray;
 }
 
-function findNumbers(array $glueckszahlen, int $number, int $amount): array {
+function findNumbers(array $jackpot, int $number, int $amount): array {
     $tries = 0;
-    $ziehung = array();
-    $retries = array();
+    $draw = array();
+    $draws = array();
 
-    while ($glueckszahlen != $ziehung) {
-        $ziehung = calcRandomArray($number, $amount);
-        sort($ziehung);
+    while ($jackpot != $draw) {
+        $draw = calcRandomArray($number, $amount);
+        sort($draw);
 
         $tries++;
         if ($tries < 1000) {
-            echo implode(" ", $ziehung)."<br>";
+            echo implode(" ", $draw)."<br>";
         }
-        array_push($retries, $ziehung);
+        array_push($draws, $draw);
     }
-    echo "Glückszahlen ".implode(" ", $ziehung)." nach ".$tries." Ziehungen gefunden."."<br>";
-    return $retries;
+    echo "Glückszahlen: { ".implode(" | ", $draw)." } nach ".$tries." Ziehungen gefunden."."<br>";
+    return $draws;
 }
 
-function getMetrics(array $glueckszahlen, array $retries) {
-    $combinations = array_fill(0, count($glueckszahlen), 0);
+function getMatchingNumbers(array $jackpot, array $draws) {
+    $matchingNumbers = array_fill(0, count($jackpot)+1, 0);
 
-    foreach ($retries as $key => $value) {
-        for($i = 0; $i <= count($combinations); $i++) {
-            if (count(array_intersect($glueckszahlen, $value)) == $i) {
-                $combinations[$i]++;
+    foreach ($draws as $key => $value) {
+        for($i = 0; $i <= count($matchingNumbers); $i++) {
+            if (count(array_intersect($jackpot, $value)) == $i) {
+                $matchingNumbers[$i]++;
             }
         }
     }
-    foreach ($combinations as $key => $value) {
+    foreach ($matchingNumbers as $key => $value) {
         echo $key." Übereinstimmungen: ".$value."<br>";
     }
 }
 
-$glueckszahlen = calcRandomArray($number, $amount);
-echo "Glückszahlen: ".implode(" ", $glueckszahlen)."<br>";
+$jackpot = calcRandomArray($number, $amount);
+echo "Glückszahlen: ".implode(" ", $jackpot)."<br>";
 
-$retries = findNumbers($glueckszahlen, $number, $amount);
-getMetrics($glueckszahlen, $retries);
+$draws = findNumbers($jackpot, $number, $amount);
+getMatchingNumbers($jackpot, $draws);
 ?>
 </body>
 </html>
