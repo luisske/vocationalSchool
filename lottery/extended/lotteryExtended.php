@@ -11,7 +11,7 @@ declare(strict_types=1);
 <h2>Lotto</h2>
 <?php
 $number = 4;
-$amount = 49;
+$amount = 20;
 
 function calcRandomArray(int $number, int $amount): array {
     $intArray = array();
@@ -41,20 +41,23 @@ function findNumbers(array $glueckszahlen, int $number, int $amount): array {
         }
         array_push($retries, $ziehung);
     }
-    echo "Glückszahlen ".implode(" ", $ziehung)." nach ".$tries." Ziehungen gefunden.";
+    echo "Glückszahlen ".implode(" ", $ziehung)." nach ".$tries." Ziehungen gefunden."."<br>";
     return $retries;
 }
 
 function getMetrics(array $glueckszahlen, array $retries) {
-    $count1 = 0;
+    $combinations = array_fill(0, count($glueckszahlen), 0);
 
     foreach ($retries as $key => $value) {
-        
-        if (array_intersect($glueckszahlen, $value) == 1) {
-            $count1++;
+        for($i = 0; $i <= count($combinations); $i++) {
+            if (count(array_intersect($glueckszahlen, $value)) == $i) {
+                $combinations[$i]++;
+            }
         }
     }
-    echo "Übereinstimmungen: ".$count1;
+    foreach ($combinations as $key => $value) {
+        echo $key." Übereinstimmungen: ".$value."<br>";
+    }
 }
 
 $glueckszahlen = calcRandomArray($number, $amount);
@@ -62,7 +65,6 @@ echo "Glückszahlen: ".implode(" ", $glueckszahlen)."<br>";
 
 $retries = findNumbers($glueckszahlen, $number, $amount);
 getMetrics($glueckszahlen, $retries);
-
 ?>
 </body>
 </html>
