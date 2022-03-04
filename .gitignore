@@ -2,3 +2,6 @@
 
 # simple script to copy php sources to xampp htdocs
 copySources.sh
+
+# intellij files
+.idea
